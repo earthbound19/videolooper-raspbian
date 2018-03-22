@@ -2,6 +2,7 @@
 # Bash script by Tim Schwartz, http://www.timschwartz.org/raspberry-pi-video-looper/ 2013
 # Comments, clean up, improvements by Derek DeMoss, for Dark Horse Comics, Inc. 2015
 # Added USB support, full path, support files with spaces in names, support more file formats - Tim Schwartz, 2016
+# Minor edits - Alex Hall 2017
 
 declare -A VIDS # make variable VIDS an Array
 
@@ -9,7 +10,7 @@ LOCAL_FILES=~/video/ # A variable of this folder
 USB_FILES=/mnt/usbdisk/ # Variable for usb mount point
 CURRENT=0 # Number of videos in the folder
 SERVICE='omxplayer' # The program to play the videos
-PLAYING=0 # Video that is currently playing
+PLAYING=0 # Used for running N of N number count of playing video
 FILE_FORMATS='.mov|.mp4|.mpg'
 
 getvids () # Since I want this to run in a loop, it should be a function
@@ -42,12 +43,12 @@ else
 	if [ $CURRENT -gt 0 ] #only play videos if there are more than one video
 	then
 		let PLAYING+=1
-		if [ $PLAYING -ge $CURRENT ] # if PLAYING is greater than or equal to CURRENT
+		if [ $PLAYING -ge $CURRENT ] # if we are playing the last video . . .
 		then
-			PLAYING=0 # Reset to 0 so we play the "first" video
+			PLAYING=0 # Reset to 0 so we play the first video.
 		fi
 
-	 	#echo ${VIDS[$PLAYING]}
+		# echo "Loading video to play\: ${VIDS[$PLAYING]} . . ."
 	 	if [ -f ${VIDS[$PLAYING]} ]; then
 			/usr/bin/omxplayer -r -o hdmi ${VIDS[$PLAYING]} # Play video
 		fi
