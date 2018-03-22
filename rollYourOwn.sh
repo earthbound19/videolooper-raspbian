@@ -14,7 +14,7 @@ mkdir /home/pi/video
 cd /home/pi
 wget https://raw.githubusercontent.com/earthbound19/videolooper-raspbian/blob/master/startvideo.sh
 chmod uga+rwx startvideo.sh
-echo "/home/pi/startvideo.sh" | tee -a /home/pi/.bashrc
+echo \"/home/pi/startvideo.sh" | tee -a /home/pi/.bashrc
 sudo raspi-config
 # Select option: 3 Boot Options
 # Select option: B2 Console Autologin
