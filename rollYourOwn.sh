@@ -14,7 +14,7 @@
 sudo apt-get update
 sudo apt-get -y install omxplayer
 sudo mkdir -p /mnt/usbdisk
-sudo echo \"/dev/sda1		/mnt/usbdisk	vfat	ro,nofail	0	0\" | sudo tee -a /etc/fstab
+sudo echo \"/dev/sda1	/mnt/usbdisk	vfat	ro,nofail	0	0\" | sudo tee -a /etc/fstab
 mkdir /home/pi/video
 cd /home/pi
 wget https://raw.githubusercontent.com/earthbound19/videolooper-raspbian/master/startvideo.sh
