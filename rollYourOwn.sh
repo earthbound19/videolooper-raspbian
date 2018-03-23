@@ -1,5 +1,4 @@
 # DESCRIPTION
-# WORK IN PROGRESS. Debugging on a live Pi . . .
 # Transforms a new Raspbian OS (Raspberry Pi Operating System) install into a video kiosk that auto-plays videos from a thumb drive and/or /home/pi/video. Built from commands given at: https://github.com/earthbound19/videolooper-raspbian/blob/master/README.md
 
 # USAGE
@@ -20,7 +19,8 @@ mkdir /home/pi/video
 cd /home/pi
 wget https://raw.githubusercontent.com/earthbound19/videolooper-raspbian/master/startvideo.sh
 chmod uga+rwx startvideo.sh
-printf \"\n\n# Script that plays videos from given folders one after another eternally\n/home/pi/startvideo.sh\n\" | tee -a /home/pi/.bashrc
+echo "" >> /home/pi/.bashrc
+echo \"/home/pi/startvideo.sh\" | tee -a /home/pi/.bashrc
 
 # AFTER RUNNING THIS SCRIPT, RUN:
 # sudo raspi-config
