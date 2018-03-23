@@ -20,7 +20,7 @@ cd /home/pi
 wget https://raw.githubusercontent.com/earthbound19/videolooper-raspbian/master/startvideo.sh
 chmod uga+rwx startvideo.sh
 echo "" >> /home/pi/.bashrc
-echo \"/home/pi/startvideo.sh\" | tee -a /home/pi/.bashrc
+echo "/home/pi/startvideo.sh" | tee -a /home/pi/.bashrc
 
 # AFTER RUNNING THIS SCRIPT, RUN:
 # sudo raspi-config
