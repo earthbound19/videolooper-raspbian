@@ -4,12 +4,10 @@
 # Transforms a new Raspbian OS (Raspberry Pi Operating System) install into a video kiosk that auto-plays videos from a thumb drive and/or /home/pi/video. Built from commands given at: https://github.com/earthbound19/videolooper-raspbian/blob/master/README.md
 
 # USAGE
-# Obtain this script via these commands:
+# Obtain and use this script via these commands:
 # wget http://s.earthbound.io/piVidSetup
-# mv piVidSetup rollYourOwn.sh
-# chmod +x ./rollYourOwn.sh
-# -- then invoke this script with:
-# ./rollYourOwn.sh
+# chmod +x piVidSetup
+# ./piVidSetup
 # -- and follow the instructions in the comments at the end of the script.
 
 # CODE
