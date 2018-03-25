@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # DESCRIPTION
 # Transforms a new Raspbian OS (Raspberry Pi Operating System) install into a video kiosk that auto-plays videos from a thumb drive and/or /home/pi/video. Built from commands given at: https://github.com/earthbound19/videolooper-raspbian/blob/master/README.md
 
