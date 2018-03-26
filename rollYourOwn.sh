@@ -11,7 +11,7 @@
 # -- and follow the instructions in the comments at the end of the script.
 
 # Save the current path to return to later as we will cd
-pushd
+pushd .
 
 # Detect whether main pi user path is pi or dietpi
 if [ -d /home/pi ]; then piDir=/home/pi; fi
