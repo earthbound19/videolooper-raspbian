@@ -10,17 +10,26 @@
 # ./piVidSetup
 # -- and follow the instructions in the comments at the end of the script.
 
+# Save the current path to return to later as we will cd
+pushd
+
+# Detect whether main pi user path is pi or dietpi
+if [ -d /home/pi ]; then piDir=/home/pi; fi
+if [ -d /home/dietpi ]; then piDir=/home/dietpi; fi
+
 # CODE
 sudo apt-get update
 sudo apt-get -y install omxplayer
 sudo mkdir -p /mnt/usbdisk
 sudo echo "/dev/sda1	/mnt/usbdisk	vfat	ro,nofail	0	0" | sudo tee -a /etc/fstab
-mkdir /home/pi/video
-cd /home/pi
+mkdir $piDir/video
+cd $piDir
 wget https://raw.githubusercontent.com/earthbound19/videolooper-raspbian/master/startvideo.sh
 chmod uga+rwx startvideo.sh
-echo "" >> /home/pi/.bashrc
-echo "/home/pi/startvideo.sh" | tee -a /home/pi/.bashrc
+echo "" >> $piDir/.bashrc
+echo "$piDir""/startvideo.sh" | tee -a $piDir/.bashrc
+
+popd
 
 # AFTER RUNNING THIS SCRIPT, RUN:
 # sudo raspi-config

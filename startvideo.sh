@@ -1,12 +1,28 @@
 #!/bin/bash
+
+# DESCRIPTION
+# Loads and eternally plays a series of videos from ~/video/ and/or a usb-drive mounted mnt/usbdisk/ folder, on a Raspberry Pi.
+
+# CREDITS
 # Bash script by Tim Schwartz, http://www.timschwartz.org/raspberry-pi-video-looper/ 2013
 # Comments, clean up, improvements by Derek DeMoss, for Dark Horse Comics, Inc. 2015
 # Added USB support, full path, support files with spaces in names, support more file formats - Tim Schwartz, 2016
-# Minor edits - Alex Hall 2017
+# Dynamic use of pi or dietpi default user path depending on platform, edits - Alex Hall 2017
+
+# USAGE
+# Obtain and install this script via instructions given in rollYourOwn.sh and README.md at: http://s.earthbound.io/piVidSetup
+
+
+# CODE
+# Detect whether main pi user path is pi or dietpi
+if [ -d /home/pi ]; then piDir=/home/pi; fi
+if [ -d /home/dietpi ]; then piDir=/home/dietpi; fi
+# If no such path was detected (if that variable is empty or nonexistent), warn user and abort script.
+if [ -z ${piDir+x} ]; then echo no directory \/home\/pi or \/home\/dietpi found\; aborting script.; exit; fi
 
 declare -A VIDS # make variable VIDS an Array
 
-LOCAL_FILES=~/video/ # A variable of this folder
+LOCAL_FILES=$piDir/video # The local folder containing videos to play
 USB_FILES=/mnt/usbdisk/ # Variable for usb mount point
 CURRENT=0 # Number of videos in the folder
 SERVICE='omxplayer' # The program to play the videos
@@ -54,7 +70,7 @@ else
 		fi
 		# echo "Array size= $CURRENT" # error checking code
 	else
-		echo "Insert USB with videos and restart or add videos to /home/pi/video and run ./startvideo.sh"
+		echo "Insert USB with videos and restart or add videos to $piDir/video and run ./startvideo.sh"
 		exit
 	fi
 fi
