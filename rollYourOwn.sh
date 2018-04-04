@@ -9,6 +9,9 @@
 # chmod +x piVidSetup
 # ./piVidSetup
 # -- and follow the instructions in the comments at the end of the script.
+# NOTE
+# Here's a test video URL:
+# http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4
 
 # Save the current path to return to later as we will cd
 pushd .
@@ -26,8 +29,14 @@ mkdir $piDir/video
 cd $piDir
 wget https://raw.githubusercontent.com/earthbound19/videolooper-raspbian/master/startvideo.sh
 chmod uga+rwx startvideo.sh
-echo "" >> $piDir/.bashrc
-echo "$piDir""/startvideo.sh" | tee -a $piDir/.bashrc
+
+# DIFFERENT STARTUP options here, plus and minuses of each commented:
+# UNCOMMENT THIS next line if you want an environment away from user input (you can't stop anything via e.g. CTRL+C):
+# startFilePath=$piDir/.bashrc
+# OR UNCOMMENT THIS next line if you want an environment that you can interrupt via keyboard presses:
+startFilePath="/etc/rc.local"
+echo "" >> $startFilePath
+echo "$piDir""/startvideo.sh" | tee -a $startFilePath
 
 popd
 
