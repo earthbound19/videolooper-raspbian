@@ -5,7 +5,7 @@
 
 # USAGE
 # Obtain and use this script via these commands:
-# wget http://s.earthbound.io/piVidSetup
+# wget s.earthbound.io/piVidSetup
 # chmod +x piVidSetup
 # ./piVidSetup
 # -- and follow the instructions in the comments at the end of the script.
@@ -30,18 +30,17 @@ cd $piDir
 wget https://raw.githubusercontent.com/earthbound19/videolooper-raspbian/master/startvideo.sh
 chmod uga+rwx startvideo.sh
 
-# DIFFERENT STARTUP options here, plus and minuses of each commented:
-# UNCOMMENT THIS next line if you want an environment away from user input (you can't stop anything via e.g. CTRL+C):
-# startFilePath=$piDir/.bashrc
-# OR UNCOMMENT THIS next line if you want an environment that you can interrupt via keyboard presses:
-startFilePath="/etc/rc.local"
+echo DONE with first part of setup\. See CONTINUED INSTRUCTIONS section in the comments of this script for further instructions.
+
+# CONTINUED INSTRUCTIONS
+# EITHER OF THESE STARTUP OPTIONS on runs from cron, which makes keyboard commands to the running omxplayer (e.g. to terminate it) futile. The latter runs before even any login can be done. NOTE that the second will probably require a manual edit of /etc/rc.local to move the command before the return 0 line.
+startFilePath=$piDir/.bashrc
+# startFilePath="/etc/rc.local"
 echo "" >> $startFilePath
 echo "$piDir""/startvideo.sh" | tee -a $startFilePath
-
 popd
-
 # AFTER RUNNING THIS SCRIPT, RUN:
-# sudo raspi-config
+# sudo raspi-config (or for preffered dietpi: dietpi-config)
 # And select and configure thusly:
 # Boot Options -> 
 # Select option: B2 Console Autologin
