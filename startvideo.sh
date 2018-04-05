@@ -7,7 +7,7 @@
 # Bash script by Tim Schwartz, http://www.timschwartz.org/raspberry-pi-video-looper/ 2013
 # Comments, clean up, improvements by Derek DeMoss, for Dark Horse Comics, Inc. 2015
 # Added USB support, full path, support files with spaces in names, support more file formats - Tim Schwartz, 2016
-# Dynamic use of pi or dietpi default user path depending on platform, edits, simplification because it just wasn't working with a lot of files; now it does. - Alex Hall 2017
+# Dynamic use of pi or dietpi default user path depending on platform, edits, simplification because it just wasn't working with a lot of files; now it does. This incidentally fixed an annoyance where it wasn't playing the first video that `ls` would list until after it played the last video. - Alex Hall 2017
 
 # USAGE
 # Obtain and install this script via instructions given in rollYourOwn.sh and README.md at: http://s.earthbound.io/piVidSetup
