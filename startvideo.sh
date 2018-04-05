@@ -32,7 +32,7 @@ do
 	do
 				# echo loading local video file to play\: $LOCAL_FILES/$vidFile
 		# Play file:
-		echo omxplayer -r -o hdmi $LOCAL_FILES/$vidFile
+		omxplayer -r -o hdmi $LOCAL_FILES/$vidFile
 	done
 	# Step through USB files:
 	for vidFile in `ls $USB_FILES | grep -E $FILE_FORMATS`
